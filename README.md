@@ -1,179 +1,81 @@
-# 🥤 Copiloto de Vendas com IA: Inspiração FYS
+# 🥤 FYS Copiloto de PDV - Inteligência Artificial Aplicada a Vendas
 
-> Um repo pequeno para uma ideia grande: usar uma live como base de conhecimento para pensar soluções de IA aplicadas a vendas. Sem complicar. Sem reunião de 3 horas que podia ser um prompt.
+Este repositório contém a entrega final para o desafio de projeto **"Copiloto de Vendas com IA para Atendimento ao Cliente"** do Bootcamp Heineken da **DIO (Digital Innovation One)**.
 
-Este repositório apoia o Desafio de Projeto Final **Copiloto de Vendas com IA para Atendimento ao Cliente**.
-
-Ele **não entrega uma solução pronta** e também **não substitui o DIO Agent**. A proposta é oferecer um contexto real da **FYS**, marca de refrigerantes do grupo **HEINEKEN**, para inspirar diferentes projetos finais a partir da live [FYS: Por Dentro da Marca, Desafios e Ideias para o Projeto Final](https://web.dio.me/lives/fys-por-dentro-da-marca-desafios-e-ideias-para-o-projeto-final?back=/track/heineken-inteligencia-artificial-aplicada-vendas).
-
-A FYS tem uma comunicação leve, bem-humorada e um pouco ácida. Ela não tenta parecer perfeita, não força pose de marca número 1 e brinca com a própria posição no mercado. Esse tom pode inspirar projetos mais criativos, humanos e menos robóticos.
+O projeto consiste em um copiloto interativo para celular ou tablet desenvolvido em **Python** com **Streamlit** e integrado à **API do Google Gemini**. Ele auxilia a força de vendas a realizar auditorias rápidas em padarias e pontos de venda (PDV), calculando o potencial de venda da marca **FYS** (do Grupo HEINEKEN) e sugerindo ações de ativação baratas, práticas e criativas com base no contexto real da marca.
 
 ---
 
-## 💡 A Sacada
+## 🎯 Desafio e Contexto de Negócio
 
-Uma IA responde melhor quando tem contexto.
+Nas rotinas comerciais, a Heineken enfrenta o desafio de otimizar a distribuição do refrigerante FYS. A marca tem um tom de voz único (leve, humorístico e autoirônico) e concorre com gigantes consolidadas.
 
-Aqui, o contexto vem de uma live. Pessoas da FYS explicaram a marca, comentaram desafios de vendas, falaram sobre canais, consumidores, pontos de venda e deram várias pistas que podem virar projeto.
+### As principais dores abordadas por esta solução são:
+1. **Falta de braços no campo:** O vendedor não consegue visitar todas as padarias todos os dias para dar ideias de visibilidade.
+2. **"Produto escondido não faz milagre":** FYS muitas vezes fica esquecida no fundo de geladeiras ou prateleiras baixas.
+3. **Falta de ideias rápidas:** Vendedores precisam de sugestões instantâneas e baratas para propor ativações no PDV.
 
-A transcrição da live está em:
+---
 
-```text
-knowledge/transcricao-live-fys.txt
+## ⚙️ Como a Solução Funciona
+
+A ferramenta une **lógica de negócio baseada em regras** com **inteligência artificial generativa (Gemini API)**:
+
+1. **Identificação e Potencial:** O vendedor responde se o PDV já vende Heineken e qual o fluxo de pessoas. O sistema gera automaticamente um **Score de Potencial** (Alto, Médio ou Baixo).
+2. **Checklist Rápido:** Uma auditoria rápida de 4 perguntas sobre a presença fria (geladeira), quente (balcão), exposição e comunicação visual.
+3. **Plano FYS com IA:** O Gemini 1.5 Flash analisa as respostas e gera 3 recomendações sob medida no tom autêntico da marca FYS, além de um argumento de vendas persuasivo.
+
+---
+
+## 🤖 Engenharia de Prompt e Regras de Negócio
+
+O modelo utiliza o modelo **Gemini 1.5 Flash** configurado com as seguintes instruções de sistema:
+
+### System Prompt (Instrução do Sistema):
+> Você é o "FYS Copiloto de PDV", um assistente especialista em trade marketing e vendas para o refrigerante FYS (Grupo HEINEKEN).
+> Seu objetivo é analisar o diagnóstico de uma padaria e sugerir ações de ativação baratas, criativas e no tom de voz da marca FYS.
+> Seu tom de voz deve ser leve, descontraído e autoirônico ("Menos marketing, mais sabor").
+> 
+> **Diretrizes de Ativação baseadas na Live FYS:**
+> 1. *Exposição:* Colocar FYS na altura dos olhos ou ao lado da Heineken na geladeira.
+> 2. *Fila do pão:* Expor FYS quente perto do balcão de pães para gerar compras por impulso.
+> 3. *Degustação:* Sugerir pequenas amostras de dose (shot) para quem espera no balcão.
+> 4. *Heineken:* Usar a facilidade logística e faturamento da Heineken como argumento.
+
+---
+
+## 🛠️ Como Executar o Projeto Localmente
+
+### 1. Clonar o Repositório
+```bash
+git clone https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git
+cd NOME_DO_REPOSITORIO
 ```
 
-Ou seja: a live virou uma **base de conhecimento**.
-
-A partir dela, você pode criar um chatbot, copiloto, agente, simulador, análise simples, gerador de mensagens ou qualquer outra solução com IA voltada a vendas e atendimento.
-
----
-
-## 🎯 Escolha Seu Desafio
-
-Você não precisa resolver tudo. Escolha um recorte simples, explique bem a dor e mostre como a IA pode ajudar.
-
-### 1. Quem é FYS mesmo?
-
-Muita gente ainda não conhece a marca ou não sabe que ela faz parte do grupo **HEINEKEN**.
-
-Ideias:
-
-- Chatbot que apresenta a marca de forma simples;
-- Agente que responde dúvidas sobre FYS;
-- Gerador de mensagens para explicar a marca sem parecer propaganda chata.
-
-### 2. Me dá uma chance aí
-
-A FYS quer que mais pessoas experimentem o produto. Antes de virar preferência, precisa virar curiosidade.
-
-Ideias:
-
-- Copiloto que sugere argumentos para incentivar experimentação;
-- Simulador de abordagem para primeira compra;
-- Gerador de campanhas simples para degustação.
-
-### 3. Cadê a FYS na padaria?
-
-Padarias são um canal importante, mas nem sempre recebem a atenção que merecem.
-
-Ideias:
-
-- Agente para priorizar padarias com maior potencial;
-- Checklist inteligente para avaliar um ponto de venda;
-- Copiloto que sugere próximos passos para ativar uma padaria.
-
-### 4. O vendedor não tem oito braços
-
-A força de vendas precisa escolher onde atuar. A IA pode ajudar a organizar oportunidades e sugerir abordagens.
-
-Ideias:
-
-- Copiloto para preparar argumentos de venda;
-- Gerador de mensagens para WhatsApp comercial;
-- Agente que sugere abordagem com base no perfil do cliente.
-
-### 5. Produto escondido não performa milagre
-
-Se o consumidor não vê, não lembra. Se não lembra, não pede. Simples assim.
-
-Ideias:
-
-- IA que sugere ações de visibilidade no ponto de venda;
-- Checklist de exposição para balcão, geladeira ou cardápio;
-- Gerador de ideias de ativação com baixo custo.
-
-### 6. Objeções de balcão
-
-Toda venda tem resistência: preço, marca desconhecida, hábito do cliente, espaço na geladeira ou medo de o produto não girar.
-
-Ideias:
-
-- Agente que responde objeções comuns;
-- Simulador de conversa entre vendedor e dono de padaria;
-- Base de perguntas e respostas para treinamento comercial.
-
-### 7. O tom FYS sem virar tiozão do pavê
-
-A FYS usa humor, leveza e autoironia. Mas existe uma linha entre ser divertido e forçar a amizade.
-
-Ideias:
-
-- Assistente para revisar mensagens no tom da marca;
-- Gerador de respostas comerciais com humor leve;
-- Comparador entre mensagem formal, informal e “modo FYS”.
-
-### 8. Dados públicos também jogam
-
-Além da transcrição, você pode usar dados públicos sobre regiões, comércios, consumo ou comportamento do público.
-
-Ideias:
-
-- Análise simples para priorizar bairros ou regiões;
-- Ranking de oportunidades por tipo de ponto de venda;
-- Agente que combina contexto da live com dados públicos.
-
----
-
-## 🤖 Usando com o DIO Agent
-
-Você pode usar o [DIO Agent](https://github.com/digitalinnovationone/dio-agent) como mentor para pensar, organizar e revisar seu projeto final.
-
-Este repo entra como **contexto de apoio**. O DIO Agent analisa o material, entende os desafios da FYS e ajuda você a escolher um recorte para criar sua própria entrega.
-
-### Prompt para começar
-
-Copie e cole este prompt no DIO Agent:
-
-```text
-Oi, DIO Agent! Estou fazendo o desafio "Copiloto de Vendas com IA para Atendimento ao Cliente"
-e quero usar este repositório da FYS como inspiração:
-
-https://github.com/digitalinnovationone/copiloto-vendas-ia-atendimento-cliente-fys
-
-Pode analisar esse repo e me ajudar a escolher uma ideia simples para o meu projeto?
-
-Quero entender qual desafio posso explorar, como a IA poderia ajudar
-e o que eu posso colocar no README da minha entrega.
-
-Me guie passo a passo, sem fazer o projeto inteiro por mim.
+### 2. Instalar as Dependências
+Certifique-se de ter o Python 3.9+ instalado. Instale os pacotes necessários:
+```bash
+pip install -r requirements.txt
 ```
 
----
+### 3. Configurar a Chave de API
+Você precisará de uma chave de API do Gemini (obtenha gratuitamente no [Google AI Studio](https://aistudio.google.com/)). 
 
-## 🗂️ Estrutura do Repositório
+Você pode inseri-la de duas formas:
+- Diretamente na barra lateral da aplicação rodando localmente.
+- Definindo a variável de ambiente:
+  - **No Windows (PowerShell):** `$env:GEMINI_API_KEY="sua_chave_aqui"`
+  - **No Linux/macOS:** `export GEMINI_API_KEY="sua_chave_aqui"`
 
-```text
-copiloto-vendas-ia-atendimento-cliente-fys/
-├── README.md
-├── AGENTS.md
-├── CLAUDE.md
-└── knowledge/
-    └── transcricao-live-fys.txt
+### 4. Rodar a Aplicação
+```bash
+streamlit run app.py
 ```
-
-A estrutura é mínima de propósito. A ideia é focar no projeto, não em criar pasta para guardar pasta.
-
-- O `README.md` explica o contexto e sugere desafios;
-- O `AGENTS.md` orienta agentes de IA a usarem este repo como contexto;
-- O `CLAUDE.md` funciona como alias para o `AGENTS.md`;
-- A pasta `knowledge/` guarda a transcrição da live.
+A aplicação abrirá automaticamente no seu navegador padrão.
 
 ---
 
-## ✅ O Que Entregar no Projeto Final
+## 🔮 Melhorias Futuras
 
-No seu próprio repositório, explique:
-
-- Qual desafio você escolheu;
-- Quem usaria sua solução;
-- Qual problema ela resolve;
-- Como a IA ajuda;
-- Qual base de conhecimento foi usada;
-- Um exemplo de conversa, resposta ou análise;
-- Possíveis melhorias futuras.
-
-Você não precisa criar uma aplicação completa. Pode entregar um protótipo, prompt, agente, simulação ou documentação bem organizada.
-
-O importante é mostrar que você entendeu o problema e usou IA para propor algo útil.
-
-Bons estudos e bora tirar a FYS do modo “quem?” para o modo “ah, essa eu conheço” 🚀
+- **Reconhecimento de Imagens (Visão Computacional):** Permitir que o vendedor tire uma foto da geladeira da padaria e a IA identifique automaticamente se a FYS está visível ou escondida.
+- **Integração com WhatsApp:** Permitir que o vendedor envie as respostas do checklist via texto de WhatsApp e receba a estratégia de volta instantaneamente em formato de mensagem de voz ou texto resumido.
